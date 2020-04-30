@@ -1,12 +1,15 @@
+import kotlinx.css.borderWidth
+import kotlinx.css.px
 import kotlinx.html.js.onChangeFunction
 import org.w3c.dom.HTMLTextAreaElement
 import react.RProps
 import react.child
 import react.dom.div
 import react.dom.render
-import react.dom.textArea
 import react.functionalComponent
 import react.useState
+import styled.css
+import styled.styledTextArea
 import kotlin.browser.document
 
 fun main() {
@@ -17,7 +20,10 @@ fun main() {
 
 val component = functionalComponent<RProps> {
     val (inputText, setText) = useState("")
-    textArea {
+    styledTextArea {
+        css {
+            borderWidth = 3.px
+        }
         attrs.onChangeFunction = {
             val target = it.target as HTMLTextAreaElement
             setText.invoke(target.value)
